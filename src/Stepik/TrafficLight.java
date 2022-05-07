@@ -32,8 +32,14 @@ class PaintTrafficLight extends Canvas {
         g.fillRect(410,205,180,520);
         g.setColor(main);
         g.fillRoundRect(433,205,134,10, 5, 5);
-        g.fillRoundRect(410,220,180,520, 25, 25);
-        g.fillRoundRect(460,750,80,100, 15, 15);
+        getLeftTriangle(g, 300,255);
+        getRightTriangle(g, 600,255);
+        getLeftTriangle(g, 300,415);
+        getRightTriangle(g, 600,415);
+        getLeftTriangle(g, 300,580);
+        getRightTriangle(g, 600,580);
+        g.fillRoundRect(410,220,180,520, 35, 35);
+        g.fillRoundRect(460,750,80,100, 25, 25);
         g.setColor(white);
         g.fillArc(425, 235, 150, 150, 0, 180);
         g.fillArc(425, 395, 150, 150, 0, 180);
@@ -48,6 +54,16 @@ class PaintTrafficLight extends Canvas {
         g.fillOval(435, 415, 130, 130);
         g.setColor(green);
         g.fillOval(435, 580, 130, 130);
+    }
+    public static void getLeftTriangle(Graphics g, int x, int y) {
+        g.fillRoundRect(x, y, 100, 20, 20, 20);
+        g.fillRoundRect(x+80, y, 20, 100, 20, 20);
+        g.fillPolygon(new int[] {x+5,x+81,x+81},new int[] {y+19,y+19,y+95},3);
+    }
+    public static void getRightTriangle(Graphics g, int x, int y) {
+        g.fillRoundRect(x, y, 100, 20, 20, 20);
+        g.fillRoundRect(x, y, 20, 100, 20, 20);
+        g.fillPolygon(new int[] {x+19,x+19,x+95},new int[] {y+19,y+95,y+19},3);
     }
 }
 
