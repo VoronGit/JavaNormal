@@ -6,9 +6,9 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Path2D;
 
 class MainFrame {
-    public static void createMainFrame(Object obj, int width, int height) {
+    public static void createMainFrame(Object obj, int width, int height, String Title) {
         JFrame.setDefaultLookAndFeelDecorated(true);
-        JFrame frame = new JFrame("TrafficLight");
+        JFrame frame = new JFrame(Title);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setPreferredSize(new Dimension(width, height));
         frame.setLocation(400, 20);
@@ -69,6 +69,6 @@ class PaintTrafficLight extends Canvas {
 
 public class TrafficLight {
     public static void main(String[] args) {
-        MainFrame.createMainFrame(new PaintTrafficLight(),1000, 1000);
+        MainFrame.createMainFrame(new PaintTrafficLight(),1000, 1000, "TrafficLight");
     }
 }

@@ -70,6 +70,6 @@ class PaintSnowMan extends Canvas {
 
 public class SnowMan {
     public static void main(String[] args) {
-        MainFrame.createMainFrame(new PaintSnowMan(), 1000, 1200);
+        MainFrame.createMainFrame(new PaintSnowMan(), 1000, 1200, "SnowMan");
     }
 }
