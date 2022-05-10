@@ -243,7 +243,7 @@ class Divider extends WritingMaterials {
         System.out.println(" Тип: " + dividerType +", Металический: " + (metal ? "Да." : "Нет."));
     }
 }
-class Main{
+class Main2{
     public static void main(String[] args) {
         WritingMaterials wm = new WritingMaterials("ручка", "Красный", 145, 15.6, true);
         wm.display();
