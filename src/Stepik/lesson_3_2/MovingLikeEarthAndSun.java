@@ -1,4 +1,6 @@
-package Stepik;
+package Stepik.lesson_3_2;
+
+import Stepik.lesson_3_1.MainFrame;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -40,8 +42,8 @@ class MoveLikeAPlanet extends JPanel {
 
     public void getImage() {
         try {
-            sun = ImageIO.read(new File("./src/Stepik/SunAndPlanets/Sun.png"));
-            earth = ImageIO.read(new File("./src/Stepik/SunAndPlanets/earth.png"));
+            sun = ImageIO.read(new File("./src/Stepik/lesson_3_2/SunAndPlanets/Sun.png"));
+            earth = ImageIO.read(new File("./src/Stepik/lesson_3_2/SunAndPlanets/earth.png"));
         } catch (Exception ex) {
             ex.printStackTrace();
         }

@@ -1,4 +1,4 @@
-package Stepik;
+package Stepik.lesson_3_1;
 
 import java.awt.*;
 import java.awt.geom.*;

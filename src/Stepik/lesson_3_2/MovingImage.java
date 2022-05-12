@@ -1,4 +1,6 @@
-package Stepik;
+package Stepik.lesson_3_2;
+import Stepik.lesson_3_1.MainFrame;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
@@ -24,7 +26,7 @@ class MoveImage extends JPanel {
 
     public MoveImage() {
         try {
-            bg = ImageIO.read(new File("./src/Stepik/1.png"));
+            bg = ImageIO.read(new File("./src/Stepik/lesson_3_2/1.png"));
         } catch (Exception ex) {
             ex.printStackTrace();
         }

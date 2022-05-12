@@ -1,6 +1,5 @@
-package Stepik;
+package Stepik.lesson_3_1;
 
-import javax.swing.JFrame;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;

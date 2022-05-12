@@ -1,4 +1,6 @@
-package Stepik;
+package Stepik.lesson_3_2;
+
+import Stepik.lesson_3_1.MainFrame;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -81,7 +83,7 @@ class MoveImageLikeDVD extends JPanel {
             }
         }
         try {
-            bg = ImageIO.read(new File("./src/Stepik/"+r+".png"));
+            bg = ImageIO.read(new File("./src/Stepik/lesson_3_2/"+r+".png"));
         } catch (Exception ex) {
             ex.printStackTrace();
         }

@@ -1,4 +1,6 @@
-package Stepik;
+package Stepik.lesson_3_2;
+
+import Stepik.lesson_3_1.MainFrame;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -29,7 +31,7 @@ class MoveLikeAllPlanets extends JPanel {
 
     public MoveLikeAllPlanets() {
         try {
-            sun = ImageIO.read(new File("./src/Stepik/SunAndPlanets/Sun.png"));
+            sun = ImageIO.read(new File("./src/Stepik/lesson_3_2/SunAndPlanets/Sun.png"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -68,10 +70,10 @@ class Planet {
     }
     public Planet (String img, int radius, double angeStart, double angChange){
         try {
-            this.img = ImageIO.read(new File("./src/Stepik/SunAndPlanets/"+img+".png"));
+            this.img = ImageIO.read(new File("./src/Stepik/lesson_3_2/SunAndPlanets/"+img+".png"));
         } catch (IOException e) {
             try {
-                this.img = ImageIO.read(new File("./src/Stepik/SunAndPlanets/sun.png"));
+                this.img = ImageIO.read(new File("./src/Stepik/lesson_3_2/SunAndPlanets/sun.png"));
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }

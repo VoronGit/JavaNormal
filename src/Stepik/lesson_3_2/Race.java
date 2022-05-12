@@ -1,4 +1,6 @@
-package Stepik;
+package Stepik.lesson_3_2;
+
+import Stepik.lesson_3_1.MainFrame;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -12,7 +14,7 @@ import java.util.HashSet;
 public class Race {
     public static HashSet<Cars> cars = new HashSet<>();
     public static void main(String[] args) {
-        File dir = new File("./src/Stepik/Cars");
+        File dir = new File("./src/Stepik/lesson_3_2/Cars");
         File[] arrFiles = dir.listFiles();
         java.util.List<File> lst = Arrays.asList(arrFiles);
         for (File img : lst) {
