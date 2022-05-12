@@ -1,4 +1,4 @@
-package Stepik;
+package Stepik.old;
 
 public class WritingMaterials {
      private String name;

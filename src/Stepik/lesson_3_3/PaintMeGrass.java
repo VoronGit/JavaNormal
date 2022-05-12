@@ -16,14 +16,7 @@ public class PaintMeGrass {
 }
 
 class Grass extends JPanel{
-    BufferedImage grass;
-    {
-        try {
-            grass = ImageIO.read(new File("."+ separator+"src"+separator+"Stepik"+separator+"lesson_3_3"+separator+"img"+separator+"Grass.png"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+    BufferedImage grass = GetImg.getMeImg("Grass");
 
     protected void paintComponent(Graphics g) {
         int curX = 0;

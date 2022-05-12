@@ -1,4 +1,4 @@
-package Stepik;
+package Stepik.old;
 
 interface LivingHouse {
     void settleDown();

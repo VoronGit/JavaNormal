@@ -1,4 +1,4 @@
-package Stepik;
+package Stepik.old;
 import java.util.Scanner;
 
 class Programm1 {
