@@ -6,17 +6,18 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashSet;
 
 public class Race {
     public static HashSet<Cars> cars = new HashSet<>();
     public static void main(String[] args) {
-        cars.add(new Cars("Ferrari"));
-        cars.add(new Cars("Passat"));
-        cars.add(new Cars("Camry"));
-        cars.add(new Cars("Ferrari"));
-        cars.add(new Cars("Camry"));
-        cars.add(new Cars("Passat"));
+        File dir = new File("./src/Stepik/Cars");
+        File[] arrFiles = dir.listFiles();
+        java.util.List<File> lst = Arrays.asList(arrFiles);
+        for (File img : lst) {
+            cars.add(new Cars(img));
+        }
         MainFrame.createMainFrame(new MakeThemRace(), 1000, Cars.getMaxHeight() + 100, "MovingImage");
     }
 }
@@ -28,7 +29,7 @@ class MakeThemRace extends JPanel {
         timer  = new Timer(60, e -> {
             for (Cars car : Race.cars) {
                 car.x += (int) (Math.random() * 5) + 1;
-                if (car.x + car.img.getWidth() >= getWidth() && car.x > 10) {
+                if (car.x + car.img.getWidth() >= getWidth() && car.x > 20) {
                     timer.stop();
                     winner = car.name;
                     color = new Color(0,0,0);
@@ -61,9 +62,9 @@ class Cars {
     protected String name;
     protected int x;
     static private int nextLine = 1;
-    public Cars (String img){
+    public Cars (File img){
         try {
-            this.img = ImageIO.read(new File("./src/Stepik/Cars/"+img+".png"));
+            this.img = ImageIO.read(img);
         } catch (IOException e) {
             try {
                 this.img = ImageIO.read(new File("./src/Stepik/SunAndPlanets/sun.png"));
@@ -73,7 +74,7 @@ class Cars {
         }
         if (carMax < this.img.getHeight() + 10) carMax = this.img.getHeight() + 10;
         this.x = 0;
-        this.name = img;
+        this.name = img.getName().substring(0, img.getName().lastIndexOf ("."));
         this.line = nextLine;
         nextLine++;
     }
