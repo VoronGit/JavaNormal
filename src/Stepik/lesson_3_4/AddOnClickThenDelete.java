@@ -13,9 +13,6 @@ public class AddOnClickThenDelete {
 }
 
 class OnClickAndDelete extends JPanel {
-
-    int x;
-    int y;
     ArrayList<Oval> ovals = new ArrayList<>();
 
     protected void paintComponent(Graphics g) {
