@@ -2,7 +2,6 @@ package Stepik.lesson_3_5;
 
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class ChooseRes {
     public static ArrayList<Options> possibilities = new ArrayList<>();
@@ -20,7 +19,7 @@ public class ChooseRes {
 class AskForRes extends JOptionPane {
     Options answer;
     {
-        answer = (Options) JOptionPane.showInputDialog(
+        answer = (Options) showInputDialog(
                 null,
                 "Choose resolution ",
                 "Choose resolution from options bellow",
