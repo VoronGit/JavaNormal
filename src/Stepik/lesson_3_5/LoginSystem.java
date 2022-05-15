@@ -15,15 +15,20 @@ class Login extends JOptionPane {
     {
         showMessageDialog(null, "Добрый день. Пройдите регистрацию!");
         do {
-            login = showInputDialog(null, "Введите ваш логин:", "Login", 1);
+            login = showInputDialog(null, "Введите ваш логин:", "Login", 3);
+            if (login == null) break;
         } while (login.length() < 6 || login.indexOf(" ") != -1);
-        getPassword("Введите пароль", 1);
-        password.length();
-        getPassword("Повторите пароль", 2);
-        password2.length();
-        showMessageDialog(null, "Регистрация прошла успешно!");
+        if (login.length() != 0) {
+            int a = getPassword("Введите пароль", 1);
+            if (a == 0) {
+                int b = getPassword("Повторите пароль", 2);
+                if (b == 0) {
+                    showMessageDialog(null, "Регистрация прошла успешно!");
+                }
+            }
+        }
     }
-    public void getPassword(String text, int c){
+    public int getPassword(String text, int c){
         JPanel panel = new JPanel();
         JPasswordField pass = new JPasswordField(10);
         JLabel label = new JLabel(text);
@@ -51,6 +56,8 @@ class Login extends JOptionPane {
                 password2 = new String(passwordC);
                 if (!password2.equals(password)) getPassword("Повторите пароль", 2);
             }
+            return 0;
         }
+        return 1;
     }
 }
