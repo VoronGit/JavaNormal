@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 
 public class YourName {
     public static void main(String[] args) {
-        new MainFrame("ShowMyName", 600, 200, new SayName());
+        new SayName();
     }
 }
 
