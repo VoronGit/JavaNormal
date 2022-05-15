@@ -69,9 +69,7 @@ class OnClickAndDeleteAndMove extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 for (int i = 0; i < ovals.size(); i++) {
-                    if (xMouse >= ovals.get(i).x - 10 && xMouse <= ovals.get(i).x + 10
-                            &&
-                            yMouse >= ovals.get(i).y - 10 && yMouse <= ovals.get(i).y + 10) {
+                    if (xMouse >= ovals.get(i).x - 10 && xMouse <= ovals.get(i).x + 10 && yMouse >= ovals.get(i).y - 10 && yMouse <= ovals.get(i).y + 10) {
                         ovals.get(i).x = xMouse;
                         ovals.get(i).y = yMouse;
                     }
