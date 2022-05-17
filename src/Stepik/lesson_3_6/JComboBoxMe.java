@@ -4,8 +4,6 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class JComboBoxMe {
     public static void main(String[] args) {
@@ -14,10 +12,9 @@ public class JComboBoxMe {
 }
 class ComboMain extends JPanel {
     String[] list = {"Красный","Оранжевый","Желтый","Зеленый","Голубой","Синий","Фиолетовый"};
-    JComboBox comboBox = new JComboBox(list);
+    JComboBox<String> comboBox = new JComboBox<>(list);
     JTextField field = new JTextField();
     JLabel label = new JLabel();
-    boolean isChecked;
     {
         label.setText("Ответ: 0");
         field.setEnabled(false);
@@ -25,12 +22,8 @@ class ComboMain extends JPanel {
         JPanel panel = new JPanel();
         JCheckBox checkBox = new JCheckBox();
         checkBox.setText("Свой вариант");
-        checkBox.addChangeListener(new ChangeListener() {
-            @Override
-            public void stateChanged(ChangeEvent e) {
-                field.setEnabled(checkBox.isSelected());
-            }
-        });
+        checkBox.addChangeListener(e -> field.setEnabled(checkBox.isSelected()));
+
         BoxLayout boxM = new BoxLayout(this, BoxLayout.LINE_AXIS);
         setLayout(boxM);
 
@@ -39,16 +32,13 @@ class ComboMain extends JPanel {
         add(Box.createHorizontalGlue());
 
 
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (checkBox.isSelected()) {
-                    label.setText("Ответ: " + field.getText());
-                } else {
-                    label.setText("Ответ: " + comboBox.getSelectedItem());
-                }
-                label.setVisible(true);
+        button.addActionListener(e -> {
+            if (checkBox.isSelected()) {
+                label.setText("Ответ: " + field.getText());
+            } else {
+                label.setText("Ответ: " + comboBox.getSelectedItem());
             }
+            label.setVisible(true);
         });
         comboBox.setMaximumSize(new Dimension(160,10));
         field.setMaximumSize(new Dimension(160,10));
