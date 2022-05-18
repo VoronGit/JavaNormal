@@ -141,7 +141,7 @@ class CalcEngine {
                     ans = "Error!";
             }
             if (ans.charAt(ans.length()-1) == '0' && ans.charAt(ans.length()-2) == '.') {
-                return ans.substring(0,ans.length()-1);
+                return ans.substring(0,ans.length()-2);
             } else {
                 return ans;
             }
