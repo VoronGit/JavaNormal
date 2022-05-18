@@ -79,7 +79,10 @@ class ButtonActHendler implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         char key = e.getActionCommand().charAt(0);
         if (Character.isDigit(key)) {
-            if (!((text.length() == 0 || text.charAt(text.length() - 1) == ' ') && key == '0')) {
+            if (text.charAt(text.length() - 1) == '0') {
+                text.append(e.getActionCommand());
+                Calculator.textField.setText(Calculator.getTextForScreen(String.valueOf(text)));
+            } else {
                 text.append(e.getActionCommand());
                 Calculator.textField.setText(Calculator.getTextForScreen(String.valueOf(text)));
             }
