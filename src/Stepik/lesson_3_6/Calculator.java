@@ -94,18 +94,13 @@ class ButtonActHendler implements ActionListener {
                     Calculator.textField.setText(Calculator.getTextForScreen(String.valueOf(text)));
                     break;
                 default:
-                    if (text.indexOf(" ") == - 1) {
-                        text.append(" ");
-                        text.append(key);
-                        text.append(" ");
-                        Calculator.textField.setText(Calculator.getTextForScreen(String.valueOf(text)));
-                    } else {
-                        text.delete(text.indexOf(" "),text.length());
-                        text.append(" ");
-                        text.append(key);
-                        text.append(" ");
-                        Calculator.textField.setText(Calculator.getTextForScreen(String.valueOf(text)));
+                    if (text.indexOf(" ") != -1) {
+                        text.delete(text.indexOf(" "), text.length());
                     }
+                    text.append(" ");
+                    text.append(key);
+                    text.append(" ");
+                    Calculator.textField.setText(Calculator.getTextForScreen(String.valueOf(text)));
             }
         }
     }
