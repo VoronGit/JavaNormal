@@ -12,8 +12,9 @@ public class Calculator {
     static JTextField textField = new JTextField();
     static String defText = "0";
     static StringBuilder text = new StringBuilder();
-    static Font font = new Font(null, Font.BOLD,35);
-    static String[] buttonList = new String[] {"1","2","3","+","4","5","6","-","7","8","9","*","C","0","=","/"};
+    static Font font = new Font(null, Font.BOLD, 35);
+    static String[] buttonList = new String[]{"1", "2", "3", "+", "4", "5", "6", "-", "7", "8", "9", "*", "C", "0", "=", "/"};
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("Calculator");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -21,7 +22,7 @@ public class Calculator {
         frame.setResizable(false);
         frame.setBackground(Color.WHITE);
         JPanel mainPanel = new JPanel();
-        BoxLayout mainLayout = new BoxLayout(mainPanel,BoxLayout.PAGE_AXIS);
+        BoxLayout mainLayout = new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS);
         mainPanel.setLayout(mainLayout);
 
         JPanel textPanel = new JPanel();
@@ -36,7 +37,7 @@ public class Calculator {
         JPanel buttonPanel = new JPanel();
         buttonPanel.setFocusable(true);
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        GridLayout gridLayout = new GridLayout(4,4);
+        GridLayout gridLayout = new GridLayout(4, 4);
         buttonPanel.setLayout(gridLayout);
 
         for (String buttonName : buttonList) {
@@ -47,7 +48,7 @@ public class Calculator {
             b.setBackground(Color.WHITE);
 
             JPanel panel = new JPanel();
-            BoxLayout box = new BoxLayout(panel,BoxLayout.PAGE_AXIS);
+            BoxLayout box = new BoxLayout(panel, BoxLayout.PAGE_AXIS);
             panel.setLayout(box);
             panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
             panel.add(b);
@@ -64,9 +65,9 @@ public class Calculator {
         frame.setLocationRelativeTo(null);
     }
 
-    static public String getTextForScreen(String text){
+    static public String getTextForScreen(String text) {
         StringBuilder builder = new StringBuilder();
-        for (int i = 1;i < 30 - text.length();i++) {
+        for (int i = 1; i < 30 - text.length(); i++) {
             builder.append(" ");
         }
         builder.append(text);
@@ -79,29 +80,32 @@ class ButtonActHendler implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         char key = e.getActionCommand().charAt(0);
         if (Character.isDigit(key)) {
-            if (text.charAt(text.length() - 1) == '0') {
-                text.append(e.getActionCommand());
-                Calculator.textField.setText(Calculator.getTextForScreen(String.valueOf(text)));
-            } else {
-                text.append(e.getActionCommand());
-                Calculator.textField.setText(Calculator.getTextForScreen(String.valueOf(text)));
-            }
+            // Добавить проверку впереди стоящего ноля
+            text.append(e.getActionCommand());
+            Calculator.textField.setText(Calculator.getTextForScreen(String.valueOf(text)));
         } else {
             switch (key) {
                 case 'C':
-                    text.delete(0,text.length());
+                    text.delete(0, text.length());
                     Calculator.textField.setText(Calculator.getTextForScreen(String.valueOf(defText)));
                     break;
                 case '=':
-                    // Добавить механихм расчета
+                    // Добавить механизм расчета
                     Calculator.textField.setText(Calculator.getTextForScreen(String.valueOf(text)));
                     break;
                 default:
-                    // Добавить проверку на то, что пользователь не добавляет больше одного действия
-                    text.append(" ");
-                    text.append(key);
-                    text.append(" ");
-                    Calculator.textField.setText(Calculator.getTextForScreen(String.valueOf(text)));
+                    if (text.indexOf(" ") == - 1) {
+                        text.append(" ");
+                        text.append(key);
+                        text.append(" ");
+                        Calculator.textField.setText(Calculator.getTextForScreen(String.valueOf(text)));
+                    } else {
+                        text.delete(text.indexOf(" "),text.length());
+                        text.append(" ");
+                        text.append(key);
+                        text.append(" ");
+                        Calculator.textField.setText(Calculator.getTextForScreen(String.valueOf(text)));
+                    }
             }
         }
     }
