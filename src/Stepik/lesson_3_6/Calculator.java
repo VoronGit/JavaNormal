@@ -80,7 +80,12 @@ class ButtonActHendler implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         char key = e.getActionCommand().charAt(0);
         if (Character.isDigit(key)) {
-            // Добавить проверку впереди стоящего ноля
+            if (text.length() == 1 && text.charAt(0) == '0') {
+                text.delete(0, text.length());
+            }
+            if (text.lastIndexOf(" ") != text.indexOf(" ") && text.length() > text.lastIndexOf(" ")+1 && text.charAt(text.lastIndexOf(" ") + 1) == '0') {
+                text.delete(text.lastIndexOf(" ") + 1, text.length());
+            }
             text.append(e.getActionCommand());
             Calculator.textField.setText(Calculator.getTextForScreen(String.valueOf(text)));
         } else {
@@ -90,7 +95,9 @@ class ButtonActHendler implements ActionListener {
                     Calculator.textField.setText(Calculator.getTextForScreen(String.valueOf(defText)));
                     break;
                 case '=':
-                    // Добавить механизм расчета
+                    String answer = CalcEngine.makeCalc(text.toString());
+                    text.delete(0, text.length());
+                    text.append(answer);
                     Calculator.textField.setText(Calculator.getTextForScreen(String.valueOf(text)));
                     break;
                 default:
@@ -102,6 +109,44 @@ class ButtonActHendler implements ActionListener {
                     text.append(" ");
                     Calculator.textField.setText(Calculator.getTextForScreen(String.valueOf(text)));
             }
+        }
+    }
+}
+class CalcEngine {
+    public static String makeCalc(String str){
+        String ans;
+        try {
+            String[] forCalc = str.split(" ");
+            double first = Double.parseDouble(forCalc[0]);
+            char oper = forCalc[1].charAt(0);
+            double second = Double.parseDouble(forCalc[2]);
+            switch (oper) {
+                case '+':
+                    ans = String.valueOf(first + second);
+                    break;
+                case '-':
+                    ans = String.valueOf(first - second);
+                    break;
+                case '*':
+                    ans = String.valueOf(first * second);
+                    break;
+                case '/':
+                    if (second != 0) {
+                        ans = String.valueOf(first / second);
+                    } else {
+                        ans = "Division by zero!";
+                    }
+                    break;
+                default:
+                    ans = "Error!";
+            }
+            if (ans.charAt(ans.length()-1) == '0' && ans.charAt(ans.length()-2) == '.') {
+                return ans.substring(0,ans.length()-1);
+            } else {
+                return ans;
+            }
+        } catch (Exception e){
+            return "Error!";
         }
     }
 }
