@@ -19,6 +19,12 @@ public class Quiz {
         qSet.add(new Question("Из какого фильма Прекрасный принц?", new String[]{"Золушка", "Русалочка", "Спящая красавица", "Мулан"}, (byte) 1));
         qSet.add(new Question("Из какого фильма Прекрасный принц?", new String[]{"Золушка", "Русалочка", "Спящая красавица", "Мулан"}, (byte) 1));
         qSet.add(new Question("Из какого фильма Прекрасный принц?", new String[]{"Золушка", "Русалочка", "Спящая красавица", "Мулан"}, (byte) 1));
+        qSet.add(new Question("Из какого фильма Прекрасный принц?", new String[]{"Золушка", "Русалочка", "Спящая красавица", "Мулан"}, (byte) 1));
+        qSet.add(new Question("Из какого фильма Прекрасный принц?", new String[]{"Золушка", "Русалочка", "Спящая красавица", "Мулан"}, (byte) 1));
+        qSet.add(new Question("Из какого фильма Прекрасный принц?", new String[]{"Золушка", "Русалочка", "Спящая красавица", "Мулан"}, (byte) 1));
+        qSet.add(new Question("Из какого фильма Прекрасный принц?", new String[]{"Золушка", "Русалочка", "Спящая красавица", "Мулан"}, (byte) 1));
+        qSet.add(new Question("Из какого фильма Прекрасный принц?", new String[]{"Золушка", "Русалочка", "Спящая красавица", "Мулан"}, (byte) 1));
+        qSet.add(new Question("Из какого фильма Прекрасный принц?", new String[]{"Золушка", "Русалочка", "Спящая красавица", "Мулан"}, (byte) 1));
         new MainFrame("Quiz", 800, 400, new QuizGUI());
     }
 
@@ -53,6 +59,8 @@ class QuizGUI extends JPanel {
     static JPanel topPanel = new JPanel();
     static JPanel questionPanel = new JPanel();
     static JPanel bottomPanel = new JPanel();
+    static JPanel gameEndPanel = new JPanel();
+    static JLabel gameEndLabel = new JLabel();
     static ArrayList<Button> buttons = new ArrayList<>();
 
     public QuizGUI() {
@@ -86,7 +94,6 @@ class QuizGUI extends JPanel {
         GridLayout buttonGrid = new GridLayout(2, 2);
         bottomPanel.setLayout(buttonGrid);
         bottomPanel.setBackground(Color.WHITE);
-
         getButtons();
 
         BoxLayout mainLayout = new BoxLayout(this, BoxLayout.PAGE_AXIS);
@@ -98,8 +105,16 @@ class QuizGUI extends JPanel {
         add(bottomPanel);
         add(Box.createRigidArea(new Dimension(0, 5)));
 
+        GridLayout gameEndLayout = new GridLayout(1, 1);
+        gameEndPanel.setLayout(gameEndLayout);
+        gameEndPanel.setVisible(false);
+        gameEndPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        gameEndLabel.setFont(new Font(null, Font.BOLD, 16));
+        gameEndLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        gameEndLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        // Фрейм после викторины
+        gameEndPanel.add(gameEndLabel);
+        add(gameEndPanel);
     }
 
     public static void getButtons() {
@@ -109,16 +124,13 @@ class QuizGUI extends JPanel {
             b.setActionCommand(ans);
             b.addActionListener(new ButtonActHandlerQuiz());
             b.setBackground(Color.LIGHT_GRAY);
-            // Сделать другой формат кнопки
             buttons.add(b);
-
             JPanel panel = new JPanel();
             BoxLayout box = new BoxLayout(panel, BoxLayout.PAGE_AXIS);
             panel.setLayout(box);
             panel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
             panel.setBackground(Color.WHITE);
             panel.add(b);
-
             bottomPanel.add(panel);
         }
     }
@@ -173,7 +185,8 @@ class ButtonActHandlerQuiz implements ActionListener {
             QuizGUI.topPanel.setVisible(false);
             QuizGUI.questionPanel.setVisible(false);
             QuizGUI.bottomPanel.setVisible(false);
-            // Сделать видимым фрейм после викторины
+            QuizGUI.gameEndPanel.setVisible(true);
+            QuizGUI.gameEndLabel.setText("Ваш результат: " + Quiz.getScore() + " из " + Quiz.getQAmount());
         }
     }
 }
