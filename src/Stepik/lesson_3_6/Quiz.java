@@ -13,6 +13,7 @@ public class Quiz {
     private static int num = 0;
 
     public static void main(String[] args) {
+        // Нормальные вопросы
         qSet.add(new Question("Из какого фильма Прекрасный принц?", new String[]{"Золушка", "Русалочка", "Спящая красавица", "Мулан"}, (byte) 1));
         qSet.add(new Question("Из какого фильма Прекрасный принц?", new String[]{"Золушка", "Русалочка", "Спящая красавица", "Мулан"}, (byte) 1));
         qSet.add(new Question("Из какого фильма Прекрасный принц?", new String[]{"Золушка", "Русалочка", "Спящая красавица", "Мулан"}, (byte) 1));
@@ -96,6 +97,9 @@ class QuizGUI extends JPanel {
         add(questionPanel);
         add(bottomPanel);
         add(Box.createRigidArea(new Dimension(0, 5)));
+
+
+        // Фрейм после викторины
     }
 
     public static void getButtons() {
@@ -105,8 +109,8 @@ class QuizGUI extends JPanel {
             b.setActionCommand(ans);
             b.addActionListener(new ButtonActHandlerQuiz());
             b.setBackground(Color.LIGHT_GRAY);
+            // Сделать другой формат кнопки
             buttons.add(b);
-
 
             JPanel panel = new JPanel();
             BoxLayout box = new BoxLayout(panel, BoxLayout.PAGE_AXIS);
@@ -169,6 +173,7 @@ class ButtonActHandlerQuiz implements ActionListener {
             QuizGUI.topPanel.setVisible(false);
             QuizGUI.questionPanel.setVisible(false);
             QuizGUI.bottomPanel.setVisible(false);
+            // Сделать видимым фрейм после викторины
         }
     }
 }
