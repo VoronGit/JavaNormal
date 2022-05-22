@@ -4,11 +4,11 @@
 
 package Stepik.lesson_3_7;
 
+import net.miginfocom.swing.MigLayout;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.*;
-import net.miginfocom.swing.*;
 
 class MainForm {
     public static void main(String[] args) {
