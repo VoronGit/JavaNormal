@@ -3,7 +3,6 @@ package Stepik.lesson_3_10;
 import java.sql.SQLException;
 
 public class DB {
-
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         Conn.Conn();
         Conn.CreateDB();
@@ -21,6 +20,9 @@ public class DB {
         Conn.get_type_where("id < 15");
         Conn.get_type_where("type LIKE '%а'");
         Conn.get_all_types();
+        Conn.insert_cat("Bob", "Наполеон", 7, 5.67);
+        Conn.insert_cat("Mark", "Сноу-шу", 6, 3.43);
+        Conn.insert_cat("Sam", "Экзотический", 4, 4.92);
         Conn.CloseDB();
     }
 }
