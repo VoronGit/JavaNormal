@@ -10,9 +10,9 @@ import java.sql.Statement;
 public class Conn {
     public static Connection conn;
     public static Statement statmt;
+    public static Statement statmt2;
     public static ResultSet resSet;
-
-    // --------ПОДКЛЮЧЕНИЕ К БАЗЕ ДАННЫХ--------
+    public static ResultSet resSet2;
     public static void Conn() throws ClassNotFoundException, SQLException {
         conn = null;
         Class.forName("org.sqlite.JDBC");
@@ -20,10 +20,9 @@ public class Conn {
 
         System.out.println("База Подключена!");
     }
-
-    // --------Создание таблицы--------
     public static void CreateDB() throws ClassNotFoundException, SQLException {
         statmt = conn.createStatement();
+        statmt2 = conn.createStatement();
         Class.forName("org.sqlite.JDBC");
         statmt.execute("DROP TABLE if exists 'types';");
         statmt.execute("CREATE TABLE if not exists 'types' ('id' INTEGER unique PRIMARY KEY AUTOINCREMENT , 'type' VARCHAR (100) not null);");
@@ -37,8 +36,6 @@ public class Conn {
         statmt.execute("DELETE FROM 'cats'");
         System.out.println("Таблица создана или уже существует.");
     }
-
-    // --------Заполнение таблицы--------
     public static void insert_type(String type) throws SQLException {
         String exp = "INSERT INTO 'types' ('type') VALUES ('" + type + "');";
         statmt.execute(exp);
@@ -46,67 +43,8 @@ public class Conn {
         System.out.println("Таблица заполнена");
     }
     public static void add_all_types() throws SQLException {
-        String[] types = new String[]{
-                "Американская короткошерстная",
-                "Американский бобтейл",
-                "Американский кёрл",
-                "Балинезийская кошка",
-                "Бенгальская кошка",
-                "Бирманская кошка",
-                "Бомбейская кошка",
-                "Бразильская короткошёрстная",
-                "Британская длинношерстная",
-                "Британская короткошерстная",
-                "Бурманская кошка",
-                "Бурмилла кошка",
-                "Гавана",
-                "Гималайская кошка",
-                "Девон-рекс",
-                "Донской сфинкс",
-                "Европейская короткошерстная",
-                "Египетская мау",
-                "Канадский сфинкс",
-                "Кимрик",
-                "Корат",
-                "Корниш-рекс",
-                "Курильский бобтейл",
-                "Лаперм",
-                "Манчкин",
-                "Мейн-ку́н",
-                "Меконгский бобтейл",
-                "Мэнкс кошка",
-                "Наполеон",
-                "Немецкий рекс",
-                "Нибелунг",
-                "Норвежская лесная кошка",
-                "Ориентальная кошка",
-                "Оцикет",
-                "Персидская кошка",
-                "Петерболд",
-                "Пиксибоб",
-                "Рагамаффин",
-                "Русская голубая кошка",
-                "Рэгдолл",
-                "Саванна",
-                "Селкирк-рекс",
-                "Сиамская кошка",
-                "Сибирская кошка",
-                "Сингапурская кошка",
-                "Скоттиш-фолд",
-                "Сноу-шу",
-                "Сомалийская кошка",
-                "Тайская кошка",
-                "Тойгер",
-                "Тонкинская кошка",
-                "Турецкая ангорская кошка",
-                "Турецкий ван",
-                "Украинский левкой",
-                "Чаузи",
-                "Шартрез",
-                "Экзотическая короткошерстная",
-                "Японский бобтейл"
-        };
-        for (String str : types) {
+
+        for (String str : CatTypes.types) {
             String exp = "INSERT INTO 'types' ('type') VALUES ('" + str + "');";
             statmt.execute(exp);
         }
@@ -120,9 +58,9 @@ public class Conn {
         statmt.execute("update 'types' set 'type' = '" + new_type + "' where id = " + id + ";");
         System.out.println("Изменения внесены!");
     }
-    public static void get_type(int id) throws SQLException {
+    public static String get_type(int id) throws SQLException {
         resSet = statmt.executeQuery("SELECT * FROM 'types' where id = " + id + ";");
-        System.out.println(resSet.getString("type"));
+        return resSet.getString("type");
     }
     public static void get_type_where(String where) throws SQLException {
         resSet = statmt.executeQuery("SELECT * FROM 'types' where " + where + ";");
@@ -149,12 +87,65 @@ public class Conn {
         statmt.execute("INSERT INTO 'cats' ('name','type_id','age','weight') VALUES ('" + name + "'," + type_id + "," + age + "," + weight + ");");
         System.out.println("Добавили котика");
     }
-    // --------Закрытие--------
+
+    public static void add_more_cats(int n) throws SQLException {
+        for (int i = 0; i < n; i++){
+            insert_cat(CatNames.names[(int) (Math.random() * CatNames.names.length)], CatTypes.types[(int) (Math.random() * CatTypes.types.length)]
+                    , (int) (Math.random() * 10), Math.random() * 10);
+        }
+    }
+    public static void delete_cat(int id) throws SQLException {
+        statmt.execute("delete from 'cats' where id = " + id + ";");
+        System.out.println("Удаление завершено!");
+    }
+    public static void delete_cat(String where) throws SQLException {
+        statmt.execute("delete from 'cats' where " + where + ";");
+        System.out.println("Удаление завершено!");
+    }
+    public static void update_cat(String set, String where) throws SQLException{
+        statmt.execute("update 'cats' set " + set + " where " + where + ";");
+        System.out.println("Изменения внесены!");
+    }
+    public static void get_cat(int id) throws SQLException{
+        resSet2 = statmt2.executeQuery("SELECT * FROM 'cats' where id = " + id + ";");
+        while (resSet2.next()) {
+            System.out.println("Выбранн кот ИД: " + resSet2.getInt("id") + ",\n" +
+                    "Имя: " + resSet2.getString("name") + ",\n" +
+                    "Порода: " + get_type(resSet2.getInt("type_id")) + ",\n" +
+                    "Возраст: " + resSet2.getInt("age") + ",\n" +
+                    "Вес: " + resSet2.getDouble("weight") + "."
+            );
+        }
+    }
+    public static void get_cat_where(String where) throws SQLException{
+        resSet2 = statmt2.executeQuery("SELECT * FROM 'cats' where " + where + ";");
+        while (resSet2.next()) {
+            System.out.println("Выбранн кот ИД: " + resSet2.getInt("id") + ",\n" +
+                    "Имя: " + resSet2.getString("name") + ",\n" +
+                    "Порода: " + get_type(resSet2.getInt("type_id")) + ",\n" +
+                    "Возраст: " + resSet2.getInt("age") + ",\n" +
+                    "Вес: " + resSet2.getDouble("weight") + "."
+            );
+        }
+    }
+    public static void get_all_cats() throws SQLException{
+        resSet2 = statmt2.executeQuery("SELECT * FROM 'cats';");
+        while (resSet2.next()) {
+            System.out.println("Выбранн кот ИД: " + resSet2.getInt("id") + ",\n" +
+                    "Имя: " + resSet2.getString("name") + ",\n" +
+                    "Порода: " + get_type(resSet2.getInt("type_id")) + ",\n" +
+                    "Возраст: " + resSet2.getInt("age") + ",\n" +
+                    "Вес: " + resSet2.getDouble("weight") + "."
+            );
+        }
+    }
     public static void CloseDB() throws ClassNotFoundException, SQLException
     {
         conn.close();
         statmt.close();
+        statmt2.close();
         resSet.close();
+        resSet2.close();
 
         System.out.println("Соединения закрыты");
     }
