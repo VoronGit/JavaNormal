@@ -1,12 +1,10 @@
-package Stepik.lesson_2_8.Entities.Employes;
+package Stepik.lesson_2_8.Entities.Employee;
 
 public enum POSITION {
-    Librarian ("Библиотекарь", 4),
-    Guard ("Охранник", 3.5),
-    Janitor ("Уборщик", 3),
-    Accountant ("Бухгалтер", 4)
-    ;
-
+    Librarian("Библиотекарь", 4),
+    Guard("Охранник", 3.5),
+    Janitor("Уборщик", 3),
+    Accountant("Бухгалтер", 4);
     private final String pos;
     private final double wage;
 
@@ -19,6 +17,7 @@ public enum POSITION {
     public String toString() {
         return pos;
     }
+
     public double getWage() {
         return wage;
     }
