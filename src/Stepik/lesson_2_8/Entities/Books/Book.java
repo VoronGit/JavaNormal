@@ -1,11 +1,11 @@
 package Stepik.lesson_2_8.Entities.Books;
 
-public class Book {
-    private String author;
-    private String name;
-    private GENRE[] genres;
-    private int year;
-    private BOOKTYPES type;
+public class Book implements Stepik.lesson_2_8.Interface.Book {
+    private final String author;
+    private final String name;
+    private final GENRE[] genres;
+    private final int year;
+    private final BOOKTYPES type;
 
     public Book(String author, String name, GENRE[] genres, int year, BOOKTYPES type) {
         this.author = author;
@@ -24,7 +24,7 @@ public class Book {
     }
 
     public String getGenre() {
-        StringBuilder genreString = new StringBuilder("");
+        StringBuilder genreString = new StringBuilder();
         for (GENRE genre : genres) {
             genreString.append(genre.toString());
             genreString.append(", ");

@@ -1,6 +1,6 @@
 package Stepik.lesson_2_8.Entities.Employee;
 
-public class Employee {
+public class Employee implements Stepik.lesson_2_8.Interface.Employee {
     private final String lastname;
     private final String firstname;
     private final String surname;

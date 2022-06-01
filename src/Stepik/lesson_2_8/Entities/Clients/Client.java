@@ -4,7 +4,7 @@ import Stepik.lesson_2_8.Entities.Books.Book;
 
 import java.util.HashSet;
 
-public class Client {
+public class Client implements Stepik.lesson_2_8.Interface.Client {
     private final String lastname;
     private final String firstname;
     private final String surname;
