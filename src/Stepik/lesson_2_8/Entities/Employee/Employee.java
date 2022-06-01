@@ -38,4 +38,7 @@ public class Employee {
     public double getSalary() {
         return position.getWage();
     }
+    public String toString() {
+        return "Сотрудник: " + surname + " " + firstname + " " + lastname + ". Должность: " + getPositionString() + ". Оплата за час: " + getSalary() +" $";
+    }
 }
