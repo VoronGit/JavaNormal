@@ -73,6 +73,6 @@ class Main {
             }
         }
         System.out.println("Ваша ставка: ");
-        System.out.println(bet.toString());
+        System.out.println(bet);
     }
 }
