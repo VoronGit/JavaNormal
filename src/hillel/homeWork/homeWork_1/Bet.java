@@ -4,10 +4,10 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Bet {
-    static int betIdHolder = 1;
-    double amount;
-    double risk;
-    int id;
+    private static int betIdHolder = 1;
+    private double amount;
+    private double risk;
+    private int id;
 
     public Bet(double amount) {
         this.amount = amount;
