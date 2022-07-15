@@ -1,5 +1,7 @@
 .idea/
 *.xml
 .target/
+.out/
 *.class
 *.zip
+*.iml
