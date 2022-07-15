@@ -1,4 +1,4 @@
-package hillel.homeWork.homeWork_2;
+package hillel.homeWork.homeWork_2.Bet;
 
 import java.util.Objects;
 import java.util.Scanner;

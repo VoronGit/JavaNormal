@@ -1,4 +1,4 @@
-package hillel.homeWork.homeWork_2;
+package hillel.homeWork.homeWork_2.Bet;
 
 public class BetException extends Exception{
     String message = "Введенные данные некорректны, попробуйте снова:";
