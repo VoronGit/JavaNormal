@@ -1,10 +1,14 @@
 package hillel.homeWork.homeWork_2.Bet;
 
+import hillel.homeWork.homeWork_2.Bet.lib.Dao;
+import hillel.homeWork.homeWork_2.Bet.lib.Inject;
+
 import java.util.Objects;
 import java.util.Scanner;
 
 @Inject
 @Dao
+
 public class Bet {
     private static int betIdHolder = 1;
     private int value;
