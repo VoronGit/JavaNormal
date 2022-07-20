@@ -30,22 +30,25 @@ public class MyLinkedList<T> implements LinkedList<T> {
         if (first == null || i == size) {
             add(value);
         } else {
+            if (i != 0) {
             for (int j = 0; j < size - i; j++) {
-                first = first.getPrevLink();
+                if (first.getPrevLink() != null) first = first.getPrevLink();
                 if (j == size - i - 2) saved = first;
             }
-            if (i != 0) {
                 first.setNextLink(added);
                 added.setPrevLink(first);
                 added.setNextLink(saved);
                 saved.setPrevLink(added);
             } else {
+                for (int j = 0; j < size - 1; j++) {
+                    first = first.getPrevLink();
+                }
                 added.setNextLink(first);
                 first.setPrevLink(added);
             }
+            first = saveNode;
+            size++;
         }
-        first = saveNode;
-        size++;
     }
 
     @Override

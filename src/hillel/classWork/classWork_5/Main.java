@@ -17,5 +17,7 @@ public class Main {
         System.out.println(myLinkedList.size());
         myLinkedList.add("notFifth", myLinkedList.size());
         System.out.println(myLinkedList);
+        myLinkedList.add("notFourth", 3);
+        System.out.println(myLinkedList);
     }
 }
