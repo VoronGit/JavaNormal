@@ -40,11 +40,12 @@ public class Calculator {
         GridLayout gridLayout = new GridLayout(4, 4);
         buttonPanel.setLayout(gridLayout);
 
+        ButtonActHendler buttonActHendler = new ButtonActHendler();
         for (String buttonName : buttonList) {
             Button b = new Button(buttonName);
             b.setFont(font);
             b.setActionCommand(buttonName);
-            b.addActionListener(new ButtonActHendler());
+            b.addActionListener(buttonActHendler);
             b.setBackground(Color.WHITE);
 
             JPanel panel = new JPanel();
