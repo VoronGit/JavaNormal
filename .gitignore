@@ -1,7 +1,3 @@
-.idea/
-*.xml
-.target/
 /out/
-*.class
-*.zip
-*.iml
+JavaNormal.iml
+/.idea/

@@ -1,3 +1,5 @@
+package homeWorks.HomeWork_9;
+
 import java.util.Scanner;
 
 public class CompareChar {

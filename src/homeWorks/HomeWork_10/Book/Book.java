@@ -1,4 +1,4 @@
-package Book;
+package homeWorks.HomeWork_10.Book;
 
 import java.util.Scanner;
 
