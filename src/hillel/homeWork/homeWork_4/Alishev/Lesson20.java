@@ -7,8 +7,8 @@ public class Lesson20 {
 }
 
 class Human2 {
-    String name;
-    int age;
+    private String name;
+    private int age;
 
     public Human2() {
         this.name = "Имя по умолчанию";
