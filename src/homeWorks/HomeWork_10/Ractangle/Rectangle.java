@@ -1,4 +1,4 @@
-package Ractangle;
+package homeWorks.HomeWork_10.Ractangle;
 
 import java.util.Scanner;
 
