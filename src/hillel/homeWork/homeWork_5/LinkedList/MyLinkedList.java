@@ -50,8 +50,28 @@ public class MyLinkedList<T> implements LinkedList<T> {
     }
 
     @Override
-    public void remove(T value) {
+    public void remove(int i) {
+        if (size == 0) return;
+        if (size == 1) clear();
+        else {
+            Node<T> saveNode = first;                                   // Создаём сейв для нашей последней ноды.
+            first = saveNode;
+            size--;
+        }
+    }
 
+    @Override
+    public void remove(T value) {
+        if (size == 0) return;
+        if (size == 1) clear();
+        else {
+            Node<T> saveNode = first;                                   // Создаём сейв для нашей последней ноды.
+            if (first.value.equals(value)) {
+
+            }
+            first = saveNode;
+            size--;
+        }
     }
 
     @Override
@@ -61,7 +81,9 @@ public class MyLinkedList<T> implements LinkedList<T> {
 
     @Override
     public void clear() {
-
+        first = null;
+        last = null;
+        size = 0;
     }
 
     @Override
