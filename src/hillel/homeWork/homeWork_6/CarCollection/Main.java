@@ -22,9 +22,18 @@ public class Main {
 
         Iterator<Car> carIterator = carCollection.iterator();
 
+        while (carIterator.hasNext()) {
+            System.out.println(carIterator.next());
+        }
 
+        Object[] cars = carCollection.toArray();
 
+        Arrays.sort(cars);  // У объекта Car есть метод compareTo, который сравнивает объекты по скорости.
 
-        System.out.println(Arrays.toString(carCollection.toArray()));
+        System.out.println(Arrays.toString(cars));
+
+        Arrays.sort(cars, new ComparatorByYear()); // Чтобы отсортироват по году выпуска создаём свой компаратор.
+
+        System.out.println(Arrays.toString(cars));
     }
 }

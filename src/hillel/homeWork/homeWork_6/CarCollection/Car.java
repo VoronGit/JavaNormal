@@ -5,12 +5,19 @@ public class Car implements Comparable {
     private int year;
     private String color;
     private int speed;
+    private int id;
+    private static int curId = 1;
 
     public Car(String manufacturer, int year, String color, int speed) {
         this.manufacturer = manufacturer;
         this.year = year;
         this.color = color;
         this.speed = speed;
+        this.id = curId++;
+    }
+
+    public int getYear() {
+        return year;
     }
 
     @Override
@@ -24,6 +31,11 @@ public class Car implements Comparable {
 
     @Override
     public String toString() {
-        return speed+"";
+        return "Car №" + id + " {" +
+                "manufacturer='" + manufacturer + '\'' +
+                ", year=" + year +
+                ", color='" + color + '\'' +
+                ", speed=" + speed +
+                '}';
     }
 }
