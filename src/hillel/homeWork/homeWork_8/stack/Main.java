@@ -1,4 +1,4 @@
-package hillel.homeWork.homeWork_8.alishev.stack;
+package hillel.homeWork.homeWork_8.stack;
 
 public class Main {
     public static void main(String[] args) {
