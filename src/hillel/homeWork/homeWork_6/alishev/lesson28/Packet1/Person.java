@@ -1,4 +1,4 @@
-package hillel.homeWork.homeWork_6.Alishev.Lesson28.Packet1;
+package hillel.homeWork.homeWork_6.alishev.lesson28.Packet1;
 
 public class Person {
     protected String name;

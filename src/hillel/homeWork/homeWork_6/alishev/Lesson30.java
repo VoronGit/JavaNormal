@@ -1,4 +1,4 @@
-package hillel.homeWork.homeWork_6.Alishev;
+package hillel.homeWork.homeWork_6.alishev;
 
 public class Lesson30 {
     public static void main(String[] args) {

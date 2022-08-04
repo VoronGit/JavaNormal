@@ -1,4 +1,4 @@
-package hillel.homeWork.homeWork_6.CarCollection;
+package hillel.homeWork.homeWork_6.carCollection;
 
 public class Car implements Comparable {
     private String manufacturer;

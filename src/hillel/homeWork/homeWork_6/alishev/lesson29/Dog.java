@@ -1,4 +1,4 @@
-package hillel.homeWork.homeWork_6.Alishev.Lesson29;
+package hillel.homeWork.homeWork_6.alishev.lesson29;
 
 public class Dog extends Animal{
     @Override

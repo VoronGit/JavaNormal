@@ -1,4 +1,4 @@
-package hillel.homeWork.homeWork_6.Alishev.Interfaces;
+package hillel.homeWork.homeWork_6.alishev.interfaces;
 
 public class Person implements Info{
     public String name;

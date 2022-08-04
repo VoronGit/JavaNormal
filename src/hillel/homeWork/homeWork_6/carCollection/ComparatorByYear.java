@@ -1,4 +1,4 @@
-package hillel.homeWork.homeWork_6.CarCollection;
+package hillel.homeWork.homeWork_6.carCollection;
 
 import java.util.Comparator;
 

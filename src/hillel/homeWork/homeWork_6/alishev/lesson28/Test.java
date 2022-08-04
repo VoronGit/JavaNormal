@@ -1,6 +1,6 @@
-package hillel.homeWork.homeWork_6.Alishev.Lesson28;
+package hillel.homeWork.homeWork_6.alishev.lesson28;
 
-import hillel.homeWork.homeWork_6.Alishev.Lesson28.Packet1.Person;
+import hillel.homeWork.homeWork_6.alishev.lesson28.Packet1.Person;
 
 public class Test {
     public int id;

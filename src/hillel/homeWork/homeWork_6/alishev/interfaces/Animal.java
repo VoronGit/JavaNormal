@@ -1,4 +1,4 @@
-package hillel.homeWork.homeWork_6.Alishev.Interfaces;
+package hillel.homeWork.homeWork_6.alishev.interfaces;
 
 public class Animal implements Info{
     public int id;

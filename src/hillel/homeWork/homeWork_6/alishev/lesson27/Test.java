@@ -1,8 +1,8 @@
-package hillel.homeWork.homeWork_6.Alishev.Lesson27;
+package hillel.homeWork.homeWork_6.alishev.lesson27;
 
-import hillel.homeWork.homeWork_6.Alishev.Lesson27.Forest.Squirel;
-import hillel.homeWork.homeWork_6.Alishev.Lesson27.Forest.Tree;
-import hillel.homeWork.homeWork_6.Alishev.Lesson27.Forest.SomeThing.*;
+import hillel.homeWork.homeWork_6.alishev.lesson27.forest.Squirel;
+import hillel.homeWork.homeWork_6.alishev.lesson27.forest.Tree;
+import hillel.homeWork.homeWork_6.alishev.lesson27.forest.SomeThing.*;
 
 import java.util.Scanner;
 

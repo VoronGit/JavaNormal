@@ -1,8 +1,8 @@
-package hillel.homeWork.homeWork_6.Alishev;
+package hillel.homeWork.homeWork_6.alishev;
 
-import hillel.homeWork.homeWork_6.Alishev.Interfaces.Animal;
-import hillel.homeWork.homeWork_6.Alishev.Interfaces.Info;
-import hillel.homeWork.homeWork_6.Alishev.Interfaces.Person;
+import hillel.homeWork.homeWork_6.alishev.interfaces.Animal;
+import hillel.homeWork.homeWork_6.alishev.interfaces.Info;
+import hillel.homeWork.homeWork_6.alishev.interfaces.Person;
 
 public class Lesson26 {
     public static void main(String[] args) {
