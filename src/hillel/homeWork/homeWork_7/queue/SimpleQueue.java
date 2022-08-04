@@ -1,4 +1,4 @@
-package javaProfessional.queue;
+package hillel.homeWork.homeWork_7.queue;
 
 import java.util.Arrays;
 
