@@ -5,21 +5,21 @@ import java.util.Arrays;
 /**
  * @author Sergey Klunniy
  */
-public class SimpleQueue {
+public class SimpleQueue<T> {
 
-    private int[] queueArray;
+    private T[] queueArray;
     private int front;
     private int tail;
     private int nItem;
 
     public SimpleQueue() {
-        this.queueArray = new int[0];
+        this.queueArray = (T[]) new Object[0];
         this.front = 0;
         this.tail = -1;
         this.nItem = 0;
     }
 
-    public void add(int element) {
+    public void add(T element) {
         queueArray = Arrays.copyOf(queueArray, queueArray.length + 1);
 
         queueArray[++tail] = element;
@@ -31,14 +31,24 @@ public class SimpleQueue {
             return;
         } else {
             ++front;
-            int[] arr = new int[queueArray.length - 1];
+            T[] arr = (T[]) new Object[queueArray.length - 1];
             System.arraycopy(queueArray, front, arr, 0, queueArray.length - 1);
             queueArray = arr;
+            nItem--;
         }
     }
 
-    public void add(int[] element) {
+    public void add(T[] element) {
+        queueArray = Arrays.copyOf(queueArray, queueArray.length + element.length);
 
+        for (int i = 0; i < element.length; i++) {
+            queueArray[++tail] = element[i];
+        }
+        nItem += element.length;
+    }
+
+    public int size() {
+        return nItem;
     }
 
     @Override
