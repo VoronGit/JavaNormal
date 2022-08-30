@@ -13,7 +13,7 @@ public class UserIntHandler {
             System.out.println(Locals.GIVEMENUMBERS);
             string = scanner.nextLine();
         } while (string.equals("") || string == null);
-        return string.replace(" ","");
+        return string.replaceAll("[\\s]+","");
     }
 
     public static boolean isRepeat() {
