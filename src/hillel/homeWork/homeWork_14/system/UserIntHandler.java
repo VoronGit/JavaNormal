@@ -1,6 +1,6 @@
-package hillel.homeWork.homeWork_14;
+package hillel.homeWork.homeWork_14.system;
 
-import hillel.homeWork.homeWork_14.enums.Locals;
+import hillel.homeWork.homeWork_14.system.enums.Locals;
 
 import java.util.Scanner;
 

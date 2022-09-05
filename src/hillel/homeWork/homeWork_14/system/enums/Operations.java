@@ -1,4 +1,4 @@
-package hillel.homeWork.homeWork_14.enums;
+package hillel.homeWork.homeWork_14.system.enums;
 
 public enum Operations {
     MULTIPLY('*') {

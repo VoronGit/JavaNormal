@@ -1,18 +1,18 @@
-package hillel.homeWork.homeWork_14;
+package hillel.homeWork.homeWork_14.system;
 
 
-import hillel.homeWork.homeWork_14.enums.Locals;
-import hillel.homeWork.homeWork_14.enums.Operations;
+import hillel.homeWork.homeWork_14.system.enums.Locals;
+import hillel.homeWork.homeWork_14.system.enums.Operations;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static hillel.homeWork.homeWork_14.UserIntHandler.getString;
-import static hillel.homeWork.homeWork_14.UserIntHandler.isRepeat;
-import static hillel.homeWork.homeWork_14.enums.Chars.*;
-import static hillel.homeWork.homeWork_14.enums.Operations.*;
+import static hillel.homeWork.homeWork_14.system.UserIntHandler.getString;
+import static hillel.homeWork.homeWork_14.system.UserIntHandler.isRepeat;
+import static hillel.homeWork.homeWork_14.system.enums.Chars.*;
+import static hillel.homeWork.homeWork_14.system.enums.Operations.*;
 
 public class CalcEngine {
     public static void calcCall(){
@@ -41,13 +41,9 @@ public class CalcEngine {
     }
 
     public static void giveAnswer(String string, boolean isRight){
-        if (isRight) {
-            System.out.printf(String.valueOf(Locals.GIVEANSWER), string, mainEngine(string));
-            System.out.println();
-        } else {
-            System.out.printf(String.valueOf(Locals.GIVEANSWER), string, "error");
-            System.out.println();
-        }
+            String result = String.format(String.valueOf(Locals.GIVEANSWER), string, (isRight) ? mainEngine(string) : "error");
+            System.out.println(result);
+            LogsWriter.writeLogs(result);
     }
 
     private static String mainEngine(String string) {
@@ -56,21 +52,16 @@ public class CalcEngine {
         List<Operations> operations = new ArrayList<>();
         StringBuilder currNumber = new StringBuilder();
         boolean wasDigit = false;
-        double result = 0;
         for (int i = 0; i < chars.length; i++) {
             if (Character.isDigit(chars[i])) {
                 wasDigit = true;
                 currNumber.append(chars[i]);
             } else {
-                wasDigit = false;
                 if (!currNumber.toString().equals("")) {
                     numbers.add(Double.parseDouble(currNumber.toString()));
                     currNumber = new StringBuilder();
                 }
                 if (chars[i] == OPEN_BRACKET.getValue()) {
-                    //(87+(2+1)+(2+1))
-                    //(-2+1)+(2+1)
-                    //((6*9-3)+64)/2
                     int openBracketCount = 1;
                     int closeBracketPosition = 0;
                     for (int j = i + 1; j < chars.length; j++) {
@@ -82,6 +73,7 @@ public class CalcEngine {
                         }
                     }
                     numbers.add(Double.parseDouble(mainEngine(string.substring(i+1,closeBracketPosition))));
+                    wasDigit = true;
                     i = closeBracketPosition;
                 } else {
                     switch (chars[i]) {
@@ -99,11 +91,44 @@ public class CalcEngine {
                             operations.add(DIVISION);
                             break;
                     }
+                    wasDigit = false;
                 }
             }
         }
-
-
-        return String.valueOf(0);
+        if (!currNumber.toString().equals("")) {
+            numbers.add(Double.parseDouble(currNumber.toString()));
+            currNumber = new StringBuilder();
+        }
+            for (int i = 0; i < operations.size(); i++) {
+                if (operations.get(i) == Operations.MULTIPLY || operations.get(i) == Operations.DIVISION) {
+                    Double a = numbers.get(i);
+                    Double b = numbers.get(i + 1);
+                    Double rez;
+                    if (operations.get(i) == Operations.MULTIPLY) {
+                        rez = Operations.MULTIPLY.count(a, b);
+                    } else {
+                        rez = Operations.DIVISION.count(a, b);
+                    }
+                    numbers.set(i, rez);
+                    numbers.remove(i + 1);
+                    operations.remove(i);
+                }
+            }
+            for (int i = 0; i < operations.size();) {
+                if (operations.get(i) == Operations.ADDITION || operations.get(i) == Operations.SUBTRACTION) {
+                    Double a = numbers.get(i);
+                    Double b = numbers.get(i + 1);
+                    Double rez;
+                    if (operations.get(i) == Operations.ADDITION) {
+                        rez = Operations.ADDITION.count(a, b);
+                    } else {
+                        rez = Operations.SUBTRACTION.count(a, b);
+                    }
+                    numbers.set(i, rez);
+                    numbers.remove(i + 1);
+                    operations.remove(i);
+                }
+            }
+        return String.valueOf(numbers.get(0));
     }
 }
